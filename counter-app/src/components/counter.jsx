@@ -10,9 +10,15 @@ class Counter extends Component {
     fontWeight: "bold"
   };
 
-  handleIncrement() {
-    console.log("Increment Clicked");
-  }
+  //   constructor() {
+  //     super();
+  //     this.handleIncrement = this.handleIncrement.bind(this);
+  //   }
+
+  // Arrow function was experimental at time of tutorial, may break in future. If so, use constructor.
+  handleIncrement = () => {
+    console.log("Increment Clicked", this);
+  };
 
   render() {
     return (
