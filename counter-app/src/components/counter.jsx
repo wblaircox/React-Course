@@ -11,7 +11,8 @@ class Counter extends Component {
   //   }
 
   // Arrow function was experimental at time of tutorial, may break in future. If so, use constructor.
-  handleIncrement = () => {
+  handleIncrement = product => {
+    console.log(product);
     this.setState({ count: this.state.count + 1 });
   };
 
@@ -20,7 +21,7 @@ class Counter extends Component {
       <div>
         <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
         <button
-          onClick={this.handleIncrement}
+          onClick={() => this.handleIncrement(product)}
           className="btn btn-secondary btn-sm"
         >
           Increment
