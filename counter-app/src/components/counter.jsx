@@ -19,9 +19,11 @@ class Counter extends Component {
 
   render() {
     //console.log("props", this.props);
+    console.log(this.props);
 
     return (
       <div>
+        <h4>{this.props.id}</h4>
         <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
         <button
           onClick={() => this.handleIncrement()} //this does not work, product not defined.
