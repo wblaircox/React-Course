@@ -5,11 +5,6 @@ class Counter extends Component {
     count: 0
   };
 
-  styles = {
-    fontSize: 50,
-    fontWeight: "bold"
-  };
-
   //   constructor() {
   //     super();
   //     this.handleIncrement = this.handleIncrement.bind(this);
@@ -17,7 +12,7 @@ class Counter extends Component {
 
   // Arrow function was experimental at time of tutorial, may break in future. If so, use constructor.
   handleIncrement = () => {
-    console.log("Increment Clicked", this);
+    this.setState({ count: this.state.count + 1 });
   };
 
   render() {
