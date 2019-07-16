@@ -6,41 +6,46 @@ class Movies extends Component {
     movies: getMovies()
   };
 
-  handleDelete = movie => {};
+  handleDelete = movie => {
+    console.log(movie);
+    const movies = this.state.movies.filter(m => m._id !== movie._id);
+    //this.setState({ movies: movies });
+    this.setState({ movies }); //simplified version
+  };
 
   render() {
     return (
       <div>
         <h1>Movie Phone!</h1>
-        <ul>
-          {this.state.movies.map(tag => (
-            <li>{tag.title}</li>
-          ))}
-        </ul>
-
         <table className="table">
           <thead>
             <tr>
-              <th scope="col">Title</th>
-              <th scope="col">Genre</th>
-              <th scope="col">Stock</th>
-              <th scope="col">Rate</th>
-              <th scope="col" />
+              <th>Title</th>
+              <th>Genre</th>
+              <th>Stock</th>
+              <th>Rate</th>
+              <th />
             </tr>
           </thead>
-          {this.state.movies.map(tag => (
-            <tbody key={tag._id}>
-              <tr>
-                <th scope="row">{tag.title}</th>
-                <td>{tag.genre.name}</td>
-                <td>{tag.numberInStock}</td>
-                <td>{tag.dailyRentalRate}</td>
+
+          <tbody>
+            {this.state.movies.map(movie => (
+              <tr key={movie._id}>
+                <th>{movie.title}</th>
+                <td>{movie.genre.name}</td>
+                <td>{movie.numberInStock}</td>
+                <td>{movie.dailyRentalRate}</td>
                 <td>
-                  <button className="btn btn-warning">Delete</button>
+                  <button
+                    onClick={() => this.handleDelete(movie)}
+                    className="btn btn-danger btn-sm"
+                  >
+                    Delete
+                  </button>
                 </td>
               </tr>
-            </tbody>
-          ))}
+            ))}
+          </tbody>
         </table>
       </div>
     );
