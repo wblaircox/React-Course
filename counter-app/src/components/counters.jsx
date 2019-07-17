@@ -11,8 +11,11 @@ class Counters extends Component {
     ]
   };
 
-  handleDelete = () => {
-    console.log("Event Handler Called");
+  handleDelete = counterId => {
+    console.log("Event Handler Called", counterId);
+    const counters = this.state.counters.filter(c => c.id !== counterId);
+    //this.setState({ counters: counters }); //override the counters 'property' with the counters 'constant'
+    this.setState({ counters }); //as the key and value are the same, can be simplified
   };
 
   render() {
@@ -22,8 +25,9 @@ class Counters extends Component {
           <Counter
             key={counter.id}
             onDelete={this.handleDelete}
-            value={counter.value}
-            id={counter.id}
+            //value={counter.value}
+            //id={counter.id} // simplify passing value and id, by passing the counter object itself.
+            counter={counter} //to work, requires changes in the counter.jsx component
           />
         ))}
       </div>

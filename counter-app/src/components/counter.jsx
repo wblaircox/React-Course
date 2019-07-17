@@ -3,7 +3,7 @@ import React, { Component } from "react";
 class Counter extends Component {
   state = {
     //count: 0
-    value: this.props.value
+    value: this.props.counter.value //prefix now with counter
   };
 
   //   constructor() {
@@ -31,7 +31,7 @@ class Counter extends Component {
           Increment
         </button>
         <button
-          onClick={this.props.onDelete}
+          onClick={() => this.props.onDelete(this.props.counter.id)} //prefix with counter
           className="btn btn-danger btn-sm m-2"
         >
           Delete
